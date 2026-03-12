@@ -1,0 +1,6 @@
+node_modules/
+.leetcode-profile/
+build/
+
+.DS_Store
+Thumbs.db
