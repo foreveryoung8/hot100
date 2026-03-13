@@ -1,6 +1,14 @@
+// @before-stub-for-debug-begin
+#include <vector>
+#include <string>
+#include "commoncppproblem1.h"
+
+using namespace std;
+// @before-stub-for-debug-end
+
 /*
  * @lc app=leetcode.cn id=1 lang=cpp
- *
+ *  ac
  * [1] 两数之和
  */
 
@@ -8,7 +16,25 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        
+        vector<int> res,nums2;
+        int n = nums.size();
+        nums2=nums;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i+1; j < n; j++)
+            {
+                if ((nums[i]+nums2[j])==target)
+                {
+                    res.push_back(i);
+                    res.push_back(j);
+                    goto end;
+                }
+                
+            }
+            
+        }   
+        end:
+        return res;
     }
 };
 // @lc code=end
