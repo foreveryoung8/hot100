@@ -60,8 +60,6 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-
-  // 只保留基础 IntelliSense 补全，关闭 Copilot AI 补全
   "github.copilot.inlineSuggest.enable": false,
   "editor.inlineSuggest.enabled": false,
   "editor.quickSuggestions": {
