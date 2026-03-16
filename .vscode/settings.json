@@ -68,5 +68,7 @@
     "strings": "off"
   },
   "editor.suggestOnTriggerCharacters": true,
-  "editor.acceptSuggestionOnEnter": "on"
+  "editor.acceptSuggestionOnEnter": "on",
+  "C_Cpp.errorSquiggles": "enabled",
+  "editor.renderValidationDecorations": "on"
 }
