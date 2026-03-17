@@ -26,29 +26,7 @@ using namespace std;
  */
 class Solution {
 public:
-    // [错误示例-1]
-    // 这里的 depth++ 传入递归时，用到的是自增前的旧值，不是下一层深度。
-    //
-    // [错误示例-2]
-    // 左右子树被重复递归调用了多次，既低效，也让结果更难判断。
-    //
-    // int isbetter(TreeNode* left,TreeNode* right,int depth){
-    //     if (left==nullptr&&right==nullptr)
-    //     {
-    //         return depth;
-    //     }
-    //
-    //     if (left==nullptr&&right!=nullptr)
-    //     {
-    //         return isbetter(right->left,right->right,depth++);
-    //     }
-    //     if (right==nullptr&&left!=nullptr)
-    //     {
-    //         return isbetter(left->left,left->right,depth++);
-    //     }
-    //
-    //     return isbetter(right->left,right->right,depth++)>isbetter(left->left,left->right,depth++)?isbetter(right->left,right->right,depth++):isbetter(left->left,left->right,depth++);
-    // }
+ 
 
     int dfs(TreeNode* node) {
         // 提示1：先想清楚空节点的深度应该返回多少。

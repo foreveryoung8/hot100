@@ -20,3 +20,8 @@ npm run favorite:hot100
 ```
 
 脚本会打开浏览器，登录 `leetcode.cn` 后自动继续执行。
+
+## Local Customizations
+
+- Favorites list in the VS Code LeetCode panel shows `tag1` first and full `tags` at the end, and is sorted by `tag1` (primary) then `difficulty` (secondary). This is implemented by patching the extension files under `%USERPROFILE%\.vscode\extensions\leetcode.vscode-leetcode-0.18.4\out\src\explorer\` and will be overwritten by extension updates.
+- Generated solution file names are customized via workspace setting in `.vscode/settings.json` using `leetcode.filePath.cpp.filename` (current format: `${id}.${difficulty}.${name}.${tag}.${ext}`).

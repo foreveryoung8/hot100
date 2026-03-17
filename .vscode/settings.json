@@ -70,5 +70,10 @@
   "editor.suggestOnTriggerCharacters": true,
   "editor.acceptSuggestionOnEnter": "on",
   "C_Cpp.errorSquiggles": "enabled",
-  "editor.renderValidationDecorations": "on"
+  "editor.renderValidationDecorations": "on",
+  "leetcode.filePath": {
+    "cpp": {
+      "filename": "${id}.${difficulty}.${name}.${tag}.${ext}"
+    }
+  }
 }

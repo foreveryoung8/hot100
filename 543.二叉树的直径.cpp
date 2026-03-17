@@ -34,6 +34,15 @@ public:
 
     int res=0;
 
+    /**
+     * 递归计算以当前节点为根的子树的最大深度，并更新二叉树的直径。
+     * 
+     * @param a 当前处理的二叉树节点指针。
+     * @return 返回以当前节点为根的子树的最大深度。
+     * 
+     * 为什么要加1：在递归返回时，max(left, right)表示左右子树的最大深度，
+     * 但还需要加上当前节点本身，所以返回 max(left, right) + 1。
+     */
     int treeAdd(TreeNode* a){
         if(a==nullptr)return 0;
         int left=treeAdd(a->left); 

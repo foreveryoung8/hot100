@@ -33,10 +33,7 @@ public:
                 if(nums[i]==0){
                     swap(nums[i],nums[t]);
                     i++;
-                }else {
-                    
 
-                }
             }
         }
   
