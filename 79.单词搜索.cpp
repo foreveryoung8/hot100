@@ -42,10 +42,7 @@ public:
             int nc = c + dir[d + 1];
 
             if (nr < 0 || nr >= m || nc < 0 || nc >= n) continue; // 越界
-            if (dfs(board, word, nr, nc, k + 1)) {
-                board[r][c] = saved; // 提前成功也要先恢复现场
-                return true;
-            }
+            if (dfs(board, word, nr, nc, k + 1))return true;
 
         }
 
