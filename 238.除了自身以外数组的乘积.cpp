@@ -35,32 +35,25 @@ using namespace std;
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-    
+        int n=nums.size();
         vector<int> res(nums.size(), 1);
-
-        /*
-        你的原思路可以理解成：
-        1 2 3 4
-        1 1 1 1   -> 先放“左边乘积”
-        1 1 2 6   -> 再乘上“右边乘积”
-
-        这里的关键不是一次性算总乘积，而是拆成两趟：
-        - 第一趟：记录每个位置左边所有数的乘积
-        - 第二趟：再乘上每个位置右边所有数的乘积
-        */
-
-        // TODO: 第一趟从左到右
-        int prefix = 1;
-        for (int i = 0; i < (int)nums.size(); i++) {
-            res[i] *= prefix;
-            prefix *= nums[i];
+        vector<int> qian(n, 1);      // 改为大小 n
+        vector<int> hou(n, 1);       // 改为大小 n
+        
+        // 前缀乘积：qian[i] = nums[0]*nums[1]*...*nums[i]
+        for(int i=1; i<n; i++){
+            qian[i] = nums[i] * qian[i-1];
         }
-
-        // TODO: 第二趟从右到左
-        int suffix = 1;
-        for (int i = (int)nums.size() - 1; i >= 0; i--) {
-            res[i] *= suffix;
-            suffix *= nums[i];
+        
+        // 后缀乘积：hou[j] = nums[j]*nums[j+1]*...*nums[n-1]
+        for(int j=n-2; j>=0; j--){
+            hou[j] = nums[j] * hou[j+1];
+        }
+        
+        // res[i] = qian[i-1] * hou[i+1]
+        for(int i=0; i<n; i++){
+            if(i > 0) res[i] *= qian[i-1];
+            if(i < n-1) res[i] *= hou[i+1];
         }
 
         return res;
