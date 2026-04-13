@@ -36,24 +36,23 @@ class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int n=nums.size();
-        vector<int> res(nums.size(), 1);
-        vector<int> qian(n, 1);      // 改为大小 n
-        vector<int> hou(n, 1);       // 改为大小 n
+        vector<int> res(n, 1);
+        vector<int> qian(n, 1);      // qian[i] = nums[0]*...*nums[i-1] (左边不包括i)
+        vector<int> hou(n, 1);       // hou[i] = nums[i+1]*...*nums[n-1] (右边不包括i)
         
-        // 前缀乘积：qian[i] = nums[0]*nums[1]*...*nums[i]
+        // 左边前缀乘积
         for(int i=1; i<n; i++){
-            qian[i] = nums[i] * qian[i-1];
+            qian[i] = qian[i-1] * nums[i-1];
         }
         
-        // 后缀乘积：hou[j] = nums[j]*nums[j+1]*...*nums[n-1]
+        // 右边后缀乘积
         for(int j=n-2; j>=0; j--){
-            hou[j] = nums[j] * hou[j+1];
+            hou[j] = hou[j+1] * nums[j+1];
         }
         
-        // res[i] = qian[i-1] * hou[i+1]
+        // 结果 = 左乘积 * 右乘积
         for(int i=0; i<n; i++){
-            if(i > 0) res[i] *= qian[i-1];
-            if(i < n-1) res[i] *= hou[i+1];
+            res[i] = qian[i] * hou[i];
         }
 
         return res;
