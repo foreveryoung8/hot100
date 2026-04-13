@@ -1,6 +1,7 @@
 // @before-stub-for-debug-begin
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include "commoncppproblem1.h"
 
 using namespace std;
@@ -16,26 +17,16 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> res,nums2;
-        int n = nums.size();
-        nums2=nums;
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = i+1; j < n; j++)
-            {
-                if ((nums[i]+nums2[j])==target)
-                {
-                    res.push_back(i);
-                    res.push_back(j);
-                    goto end;
-                }
-                
+        unordered_map<int, int> seen;
+        for (int i = 0; i < nums.size(); ++i) {
+            int need = target - nums[i];
+            auto it = seen.find(need);
+            if (it != seen.end()) {
+                return {it->second, i};
             }
-            
-        }   
-        end:
-        return res;
+            seen[nums[i]] = i;
+        }
+        return {};
     }
 };
 // @lc code=end
-
