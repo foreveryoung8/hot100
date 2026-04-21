@@ -40,7 +40,8 @@ public:
         int m = grid.size();
         int n = grid[0].size();
         int minutes = 0;
-        const int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        int dx[4] = {1, -1, 0, 0};
+        int dy[4] = {0, 0, 1, -1};
 
         // 这是你要试的“全图遍历 + 逐轮扩散”版本。
         // 每一轮都扫一遍整个网格，找出这一轮会变烂的新橘子，再统一更新。
@@ -51,9 +52,9 @@ public:
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (grid[i][j] != 2) continue;
-                    for (auto& d : dirs) {
-                        int ni = i + d[0];
-                        int nj = j + d[1];
+                    for (int k = 0; k < 4; ++k) {
+                        int ni = i + dx[k];
+                        int nj = j + dy[k];
                         if (ni < 0 || ni >= m || nj < 0 || nj >= n) continue;
                         if (grid[ni][nj] == 1) {
                             willRot.push_back({ni, nj});
